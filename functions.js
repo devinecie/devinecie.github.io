@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
                 }
 
-                setTimeout(function() {
+                setTimeout(function () {
                     onSwipeLeft();
                     resetOverlayLeft();
                 },300);
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     transformUi(0, 0, 1, rightObj);
                 }
 
-                setTimeout(function(){
+                setTimeout(function () {
                     onSwipeRight();
                     resetOverlayRight();
                 },300);
@@ -208,6 +208,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
             updateUi();
             currentElement();
             setActiveHidden();
+            pointUpdate(-1);
+            if (currentPosition == maxElements) {
+                showResults();
+            }
         };
 
         //Swipe active card to right.
@@ -224,6 +228,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
             updateUi();
             currentElement();
             setActiveHidden();
+            pointUpdate(1);
+            if (currentPosition == maxElements) {
+                showResults();
+            }
         };
 
         //Swipe active card to top.
@@ -241,6 +249,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
             updateUi();
             currentElement();
             setActiveHidden();
+            if (currentPosition == maxElements) {
+                showResults();
+            }
         };
 
         //Remove transitions from all elements to be moved in each swipe movement to improve perfomance of stacked cards.
@@ -514,6 +525,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         };
 
+        //Adding or removing points from some categories
+        function pointUpdate(quantity) {
+            scores[dico_files_dir[filesChosen[currentPosition]]] = scores[dico_files_dir[filesChosen[currentPosition]]] + quantity;
+        }
+
         //Touch events block
         var element = obj;
         var startTime;
@@ -633,10 +649,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
             touchingElement = false;
 
-            if(!(currentPosition >= maxElements)){
-                if(translateY < (elementHeight * -1) && translateX > ((listElNodesWidth / 2) * -1) && translateX < (listElNodesWidth / 2)){  //is Top?
+            if (!(currentPosition >= maxElements)) {
+                if (translateY < (elementHeight * -1) && translateX > ((listElNodesWidth / 2) * -1) && translateX < (listElNodesWidth / 2)) {  //is Top?
 
-                    if(translateY < (elementHeight * -1) || (Math.abs(translateY) / timeTaken > velocity)){ // Did It Move To Top?
+                    if (translateY < (elementHeight * -1) || (Math.abs(translateY) / timeTaken > velocity)) { // Did It Move To Top?
                         onSwipeTop();
                     } else {
                         backToMiddle();
@@ -644,15 +660,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
                 } else {
 
-                    if(translateX < 0){
-                        if(translateX < ((listElNodesWidth / 2) * -1) || (Math.abs(translateX) / timeTaken > velocity)){ // Did It Move To Left?
+                    if (translateX < 0) {
+                        if (translateX < ((listElNodesWidth / 2) * -1) || (Math.abs(translateX) / timeTaken > velocity)) { // Did It Move To Left?
                             onSwipeLeft();
                         } else {
                             backToMiddle();
                         }
-                    } else if(translateX > 0) {
+                    } else if (translateX > 0) {
 
-                        if (translateX > (listElNodesWidth / 2) && (Math.abs(translateX) / timeTaken > velocity)){ // Did It Move To Right?
+                        if (translateX > (listElNodesWidth / 2) && (Math.abs(translateX) / timeTaken > velocity)) { // Did It Move To Right?
                             onSwipeRight();
                         } else {
                             backToMiddle();
@@ -662,6 +678,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 }
             }
         };
+
+        function showResults() {
+            keys = Object.keys(scores);
+            maxCategory = keys[0];
+            currentMax = scores[keys[0]];
+            for (i = 1; i < keys.length; i++) {
+                if (scores[keys[i]] > currentMax) {
+                    maxCategory = keys[i];
+                    currentMax = scores[keys];
+                }
+            }
+            document.location.href = 'results/' + maxCategory + '.html';
+        }
 
         element.addEventListener('touchstart', gestureStart, false);
         element.addEventListener('touchmove', gestureMove, false);
