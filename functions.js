@@ -679,5 +679,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     stackedCards();
+    console.log(dico_files_dir);
 
 });
