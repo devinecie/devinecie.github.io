@@ -43,3 +43,8 @@ filesChosen.forEach(function (file) {
 
     $("div.stackedcards-container").append(container);
 });
+
+scores = {};
+foldersList.forEach(function (folder) {
+    scores[folder] = 0;
+});
