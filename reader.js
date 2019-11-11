@@ -21,6 +21,15 @@ for (i = 0; i < nFolders; i++) {
     };
 };
 
+// Function to shuffle array
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+shuffle(filesChosen)
+
 filesChosen.forEach(function (file) {
     var path = "asiatique_africain/" + dico_files_dir[file] + "/" + file;
 
