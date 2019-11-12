@@ -204,11 +204,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 transformUi(-1000, 0, 0, topObj); //Move topOverlay
                 resetOverlayLeft();
             }
+            pointUpdate(-1);
             currentPosition = currentPosition + 1;
             updateUi();
             currentElement();
             setActiveHidden();
-            pointUpdate(-1);
             if (currentPosition == maxElements) {
                 showResults();
             }
@@ -223,12 +223,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 transformUi(1000, 0, 0, topObj); //Move topOverlay
                 resetOverlayRight();
             }
-
+            pointUpdate(1);
             currentPosition = currentPosition + 1;
             updateUi();
             currentElement();
             setActiveHidden();
-            pointUpdate(1);
             if (currentPosition == maxElements) {
                 showResults();
             }
