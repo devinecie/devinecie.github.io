@@ -16,7 +16,6 @@ body {
 }
 
 #results {
-    text-align: justify;
     font-family: Calibri;
-    font-size: 2vw;
+    font-size: 1.5vw;
 }
