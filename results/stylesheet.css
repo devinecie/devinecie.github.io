@@ -14,3 +14,9 @@ body {
     border: #f0f8ff;
 
 }
+
+#results {
+    text-align: justify;
+    font-family: Calibri;
+    font-size: 2vw;
+}
