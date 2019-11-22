@@ -31,7 +31,7 @@ function shuffle(array) {
 shuffle(filesChosen)
 
 filesChosen.forEach(function (file) {
-    var path = "asiatique_africain/" + dico_files_dir[file] + "/" + file;
+    var path = "sections/" + dico_files_dir[file] + "/" + file;
 
     var container = $("<div>");
     container.addClass("card-item");
