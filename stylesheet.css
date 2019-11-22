@@ -7,13 +7,23 @@ body {
     padding: 5%;
 }
 
+a {
+    color: black;
+    font-style: italic;
+}
+
+#logo {
+    position: absolute;
+    cursor: pointer;
+}
+
 #title {
     margin-top: 0;
     text-align: center;
     font-family: Calibri;
     font-size: 50pt;
     border: #f0f8ff;
-
+    min-height: 10%;
 }
 
 .no-transition {
@@ -195,3 +205,38 @@ body {
     height: 100%;
 }
 
+#results {
+    font-family: Calibri;
+    font-size: 1.5vw;
+}
+
+.boutonCarte {
+    box-sizing: border-box;
+    overflow: visible;
+    -webkit-appearance: button;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: #fff;
+    background-color: #FFC428;
+    border-color: #FFC428;
+    cursor: pointer;
+    font-size: 2vw;
+}
+
+.buttonInside {
+    font-weight: 400;
+    color: #212529;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    flex: 0 0 33.333333%;
+    text-align: center !important;
+}
